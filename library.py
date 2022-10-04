@@ -20,6 +20,9 @@ class Copy():
         self.author = author
         self.published = published
 
+    def __str__(self):
+        return self.title +'/'+ self.author
+
 #Burrower class contains books borrowed by instance of this class
 class Borrower:
     def __init__(self, surname):
@@ -123,19 +126,33 @@ class Library:
 library = Library()
 
 actions = int(input())
-print('Make actions')
 for i in range(0, actions):
-  action = eval(input())
-  if action[0] =="borrow":
-    library.borrow_book(action[1], action[2])
-  elif action[0] =="return":
-    library.return_book(action[1], action[2])
-  elif action[0] == "add":
-    library.add_book(action[1],action[2],action[3])
-  elif action[0] == "show_borrowed":
+  print('Choose next action: add, borrow, return, show_borrowed, show_books')
+  action = input()
+  if action =="borrow":
+    print('Enter title')
+    title = input()
+    print('Enter your surname')
+    surname = input()
+    library.borrow_book(title, surname)
+  elif action =="return":
+    print('Enter title')
+    title = input()
+    print('Enter your surname')
+    surname = input()
+    library.return_book(title, surname)
+  elif action == "add":
+    print('Enter title')
+    title = input()
+    print('Enter author')
+    author = input()
+    print('Enter year of publication')
+    published = input()
+    library.add_book(title, author, published)
+  elif action == "show_borrowed":
     library.show_borrowed_books()
-  elif action[0] == "show_books":
+  elif action == "show_books":
     library.show_books()
-'Program ends'
+print('Program ends')
 
 
